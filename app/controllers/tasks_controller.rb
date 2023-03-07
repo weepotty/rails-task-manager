@@ -20,6 +20,11 @@ class TasksController < ApplicationController
     redirect_to tasks_path
   end
 
+  # GET /tasks/:id/edit
+  def edit
+    @task = Task.find(params[:id])
+  end
+
   private
 
   def create_params
