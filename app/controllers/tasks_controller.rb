@@ -9,4 +9,14 @@ class TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
   end
+
+  #GET /tasks/new
+  def new
+    @task = Task.new
+  end
+
+  #POST /tasks
+  def create
+
+  end
 end

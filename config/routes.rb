@@ -5,12 +5,15 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # As a user, I can list tasks
-  get '/tasks', to: 'tasks#index', as: :tasks
-  # As a user, I can view the details of a task
-  get '/tasks/:id', to: 'tasks#show', as: :task
+  get 'tasks', to: 'tasks#index', as: :tasks
 
-# As a user, I can add a new task
-# post '/tasks', to: 'tasks#create'
+  # As a user, I can add a new task
+  get 'tasks/new', to: 'tasks#new', as: :new_task
+  post 'tasks', to: 'tasks#create'
+
+  # As a user, I can view the details of a task
+  get 'tasks/:id', to: 'tasks#show', as: :task
+
 
 
 
