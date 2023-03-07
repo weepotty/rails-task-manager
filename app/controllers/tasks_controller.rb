@@ -30,7 +30,7 @@ class TasksController < ApplicationController
   # PATCH /tasks/:id
   def update
     @task.update!(update_params)
-    redirect_to task_path(@task)
+    redirect_to tasks_path
   end
 
   # DELETE /tasks/:id

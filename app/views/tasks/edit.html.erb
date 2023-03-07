@@ -1,9 +1,1 @@
-<%= form_with model: @task do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  <%= f.label :details %>
-  <%= f.text_area :details %>
-  <%= f.label "Completed" %>
-    <%= f.check_box :completed%>
-  <%= f.submit "Update" %>
-<% end %>
+<%= render "form", task: @task %>
