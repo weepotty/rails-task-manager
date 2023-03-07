@@ -6,4 +6,5 @@
 
 
   <h4><%= link_to 'See details', task_path(task) %></h4>
+  <h4><%= link_to 'Delete task', task_path(task), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h4>
 <% end %>
