@@ -25,12 +25,28 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
   end
 
+  # PATCH /tasks/:id
+  def update
+    @task = Task.find(params[:id])
+    @task.update!(update_params)
+
+    redirect_to task_path(@task)
+  end
+
   private
 
   def create_params
     params.require(:task).permit(
       :title,
       :details
+    )
+  end
+
+  def update_params
+    params.require(:task).permit(
+      :title,
+      :details,
+      :completed
     )
   end
 end
