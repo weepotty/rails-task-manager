@@ -1,10 +1,20 @@
-<h1>All tasks</h1>
-<h4><%= link_to 'Add task', new_task_path %></h4>
+<h1>My tasks</h1>
 
+
+<ol>
 <% @tasks.each do |task| %>
-  <h2>Task: <%= task.title %></h2>
-  <h3><%= task.completed %></h3>
+  <li> <% if task.completed %>
+  <i class="fa-regular fa-square-check"></i>
+  <% else %>
+  <i class="fa-regular fa-square"></i>
+  <% end %>
 
-  <h4><%= link_to 'See details', task_path(task) %></h4>
-  <h4><%= link_to 'Delete task', task_path(task), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h4>
+  <%= link_to task.title, task_path(task) %><span><%= link_to task_path(task), data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+  <i class="fa-solid fa-trash-can"></i>
+  <%end%></span></li>
+
+
 <% end %>
+</ol>
+
+<i class="fa-solid fa-plus"></i> <%= link_to 'Add task', new_task_path %>

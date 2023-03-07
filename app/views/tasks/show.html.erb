@@ -1,7 +1,12 @@
-<h2>Task: <%= @task.title %></h2>
+<h2>To Do: <%= @task.title %></h2>
 <p>Details: <%= @task.details %></p>
-<p>Completed: <%= @task.completed %></p>
+
+  <% if @task.completed %>
+  <i class="fa-regular fa-square-check"></i><span> This task is done</span>
+  <% else %>
+  <i class="fa-regular fa-square"></i><span> This task ain't done yet</span>
+  <% end %>
+
 
 <h4><%= link_to 'Edit Task', edit_task_path(@task) %></h4>
-
-<h4><%= link_to 'See all', tasks_path %></h4>
+<h4><%= link_to 'Back to List', tasks_path %></h4>
