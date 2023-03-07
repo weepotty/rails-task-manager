@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: %i[show edit update destroy]
+
   # GET /tasks
   def index
     @tasks = Task.all
@@ -6,7 +8,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/:id
   def show
-    @task = Task.find(params[:id])
+    @task
   end
 
   # GET /tasks/new
@@ -22,26 +24,26 @@ class TasksController < ApplicationController
 
   # GET /tasks/:id/edit
   def edit
-    @task = Task.find(params[:id])
+    @task
   end
 
   # PATCH /tasks/:id
   def update
-    @task = Task.find(params[:id])
     @task.update!(update_params)
-
     redirect_to task_path(@task)
   end
 
   # DELETE /tasks/:id
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
-
-    redirect_to tasks_path
+    redirect_to tasks_path, status: :see_other
   end
 
   private
+
+  def set_task
+    @task = Task.find(params[:id])
+  end
 
   def create_params
     params.require(:task).permit(
